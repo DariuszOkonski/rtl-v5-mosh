@@ -4,13 +4,15 @@
 // import Onboarding from '../components/Onboarding';
 // import TermsAndConditions from '../components/TermsAndConditions';
 
+import ProductDetail from '../components/ProductDetail';
+
 // import { Toaster } from 'react-hot-toast';
 // import ToastDemo from '../components/ToastDemo';
 // import OrderStatusSelector from '../components/OrderStatusSelector';
-import ProductList from '../components/ProductList';
+// import ProductList from '../components/ProductList';
 
 const PlaygroundPage = () => {
-  return <ProductList />;
+  return <ProductDetail productId={2} />;
 };
 
 export default PlaygroundPage;
