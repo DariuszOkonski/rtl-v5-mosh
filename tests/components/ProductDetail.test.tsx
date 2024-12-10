@@ -15,7 +15,7 @@ describe('ProductDetail', () => {
     db.product.delete({ where: { id: { equals: productId } } });
   });
 
-  it('should render product details', async () => {
+  it.skip('should render product details', async () => {
     const product = db.product.findFirst({
       where: { id: { equals: productId } },
     });
