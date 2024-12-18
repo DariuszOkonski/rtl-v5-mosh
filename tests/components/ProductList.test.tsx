@@ -14,7 +14,6 @@ describe('ProductList', () => {
   it('should render no products available if no product is found', async () => {
     server.use(http.get('/products', () => HttpResponse.json([])));
     render(<ProductList />);
-
     const message = await screen.findByText(/no products/i);
     expect(message).toBeInTheDocument();
   });
