@@ -4,7 +4,11 @@ import ProductDetail from '../../src/components/ProductDetail';
 import { db } from '../mocks/db';
 import { server } from '../mocks/server';
 
-// NEXT MOCKING API MOVIE 4 12;28 MIN
+// NEXT MOCKING API MOVIE 4
+
+// describe('ProductDetail', () => {
+
+// });
 
 describe('ProductDetail', () => {
   let productId: number;
