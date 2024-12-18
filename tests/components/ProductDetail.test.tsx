@@ -3,12 +3,36 @@ import { http, HttpResponse } from 'msw';
 import ProductDetail from '../../src/components/ProductDetail';
 import { db } from '../mocks/db';
 import { server } from '../mocks/server';
+import { products } from '../mocks/data';
 
 // NEXT MOCKING API MOVIE 4
 
-// describe('ProductDetail', () => {
+describe('ProductDetail v1', () => {
+  it('should render the list of products', async () => {
+    render(<ProductDetail productId={1} />);
 
-// });
+    const result = await screen.findByText(new RegExp(products[0].name));
+    expect(result).toBeInTheDocument();
+    expect(
+      await screen.findByText(new RegExp(products[0].price.toString()))
+    ).toBeInTheDocument();
+  });
+
+  it('should render message if product not found', async () => {
+    server.use(http.get('/products/1', () => HttpResponse.json(null)));
+    render(<ProductDetail productId={1} />);
+
+    const message = await screen.findByText(/not found/i);
+    expect(message).toBeInTheDocument();
+  });
+
+  it('should render an error for invalid productId', async () => {
+    render(<ProductDetail productId={0} />);
+
+    const message = await screen.findByText(/invalid id/i);
+    expect(message).toBeInTheDocument();
+  });
+});
 
 describe('ProductDetail', () => {
   let productId: number;
