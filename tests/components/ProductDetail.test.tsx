@@ -4,6 +4,8 @@ import ProductDetail from '../../src/components/ProductDetail';
 import { db } from '../mocks/db';
 import { server } from '../mocks/server';
 
+// NEXT MOCKING API MOVIE 4 12;28 MIN
+
 describe('ProductDetail', () => {
   let productId: number;
   beforeAll(() => {
