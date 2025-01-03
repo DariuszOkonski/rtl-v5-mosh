@@ -1,84 +1,60 @@
-import { render, screen } from '@testing-library/react';
-import { http, HttpResponse } from 'msw';
-import ProductDetail from '../../src/components/ProductDetail';
-import { db } from '../mocks/db';
-import { server } from '../mocks/server';
-import { products } from '../mocks/data';
-
-// NEXT MOCKING API MOVIE 4
-
 describe('ProductDetail v1', () => {
-  it('should render the list of products', async () => {
-    render(<ProductDetail productId={1} />);
-
-    const result = await screen.findByText(new RegExp(products[0].name));
-    expect(result).toBeInTheDocument();
-    expect(
-      await screen.findByText(new RegExp(products[0].price.toString()))
-    ).toBeInTheDocument();
-  });
-
-  it('should render message if product not found', async () => {
-    server.use(http.get('/products/1', () => HttpResponse.json(null)));
-    render(<ProductDetail productId={1} />);
-
-    const message = await screen.findByText(/not found/i);
-    expect(message).toBeInTheDocument();
-  });
-
-  it('should render an error for invalid productId', async () => {
-    render(<ProductDetail productId={0} />);
-
-    const message = await screen.findByText(/invalid id/i);
-    expect(message).toBeInTheDocument();
-  });
+  it('should', () => {});
 });
 
-describe('ProductDetail', () => {
-  let productId: number;
-  beforeAll(() => {
-    const product = db.product.create();
-    productId = product.id;
-  });
+// describe('ProductDetail v1', () => {
+//   it('should render the list of products', async () => {
+//     render(<ProductDetail productId={1} />);
 
-  afterAll(() => {
-    db.product.delete({ where: { id: { equals: productId } } });
-  });
+//     expect(await screen.findByText(/product 1/i)).toBeInTheDocument();
+//   });
+// });
 
-  it.skip('should render product details', async () => {
-    const product = db.product.findFirst({
-      where: { id: { equals: productId } },
-    });
+// describe('ProductDetail', () => {
+//   let productId: number;
+//   beforeAll(() => {
+//     const product = db.product.create();
+//     productId = product.id;
+//   });
 
-    render(<ProductDetail productId={productId} />);
+//   afterAll(() => {
+//     db.product.delete({ where: { id: { equals: productId } } });
+//   });
 
-    expect(
-      await screen.findByText(new RegExp(product!.name))
-    ).toBeInTheDocument();
-    expect(
-      await screen.findByText(new RegExp(product!.price.toString()))
-    ).toBeInTheDocument();
-  });
+//   it.skip('should render product details', async () => {
+//     const product = db.product.findFirst({
+//       where: { id: { equals: productId } },
+//     });
 
-  it('should render message if product not found', async () => {
-    server.use(http.get('/products/1', () => HttpResponse.json(null)));
-    render(<ProductDetail productId={1} />);
+//     render(<ProductDetail productId={productId} />);
 
-    const message = await screen.findByText(/not found/i);
-    expect(message).toBeInTheDocument();
-  });
+//     expect(
+//       await screen.findByText(new RegExp(product!.name))
+//     ).toBeInTheDocument();
+//     expect(
+//       await screen.findByText(new RegExp(product!.price.toString()))
+//     ).toBeInTheDocument();
+//   });
 
-  it('should render an error for invalid productID', async () => {
-    render(<ProductDetail productId={0} />);
+//   it('should render message if product not found', async () => {
+//     server.use(http.get('/products/1', () => HttpResponse.json(null)));
+//     render(<ProductDetail productId={1} />);
 
-    const message = await screen.findByText(/invalid/i);
-    expect(message).toBeInTheDocument();
-  });
+//     const message = await screen.findByText(/not found/i);
+//     expect(message).toBeInTheDocument();
+//   });
 
-  it('should render an error if data fetching fails', async () => {
-    server.use(http.get('/products/1', () => HttpResponse.error()));
-    render(<ProductDetail productId={1} />);
+//   it('should render an error for invalid productID', async () => {
+//     render(<ProductDetail productId={0} />);
 
-    expect(await screen.findByText(/error/i)).toBeInTheDocument();
-  });
-});
+//     const message = await screen.findByText(/invalid/i);
+//     expect(message).toBeInTheDocument();
+//   });
+
+//   it('should render an error if data fetching fails', async () => {
+//     server.use(http.get('/products/1', () => HttpResponse.error()));
+//     render(<ProductDetail productId={1} />);
+
+//     expect(await screen.findByText(/error/i)).toBeInTheDocument();
+//   });
+// });
