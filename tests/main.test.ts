@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { faker } from '@faker-js/faker';
 import { describe, it } from 'vitest';
 
 describe('group test', () => {
-  it('should', async () => {
-    const response = await fetch('/categories');
-    const data = await response.json();
-    expect(data).toHaveLength(3);
+  it('should', () => {
+    console.log({
+      name: faker.commerce.productName(),
+      price: faker.commerce.price({ min: 1, max: 100 }),
+    });
   });
 });

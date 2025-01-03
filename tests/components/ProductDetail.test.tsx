@@ -4,6 +4,8 @@ import { products } from '../mocks/data';
 import { server } from '../mocks/server';
 import { http, HttpResponse } from 'msw';
 
+//  NEXT 6-MOCKING DATA
+
 describe('ProductDetail v1', () => {
   it('should render the list of products', async () => {
     render(<ProductDetail productId={1} />);
