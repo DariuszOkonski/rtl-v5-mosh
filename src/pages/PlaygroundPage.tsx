@@ -5,7 +5,7 @@
 // import TermsAndConditions from '../components/TermsAndConditions';
 
 // import ProductDetail from '../components/ProductDetail';
-import ProductDetail from '../components/ProductDetail';
+import BrowseProducts from './BrowseProductsPage';
 
 // import { Toaster } from 'react-hot-toast';
 // import ToastDemo from '../components/ToastDemo';
@@ -13,7 +13,7 @@ import ProductDetail from '../components/ProductDetail';
 // import ProductList from '../components/ProductList';
 
 const PlaygroundPage = () => {
-  return <ProductDetail productId={1} />;
+  return <BrowseProducts />;
 };
 
 export default PlaygroundPage;
